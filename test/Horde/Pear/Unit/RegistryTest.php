@@ -11,6 +11,9 @@
  * @package    Pear
  * @subpackage UnitTests
  */
+namespace Horde\Pear\Unit;
+use Horde\Pear\TestCase;
+use \Horde_Pear_Registry;
 
 /**
  * Test the registry wrapper.
@@ -22,15 +25,11 @@
  * @package    Pear
  * @subpackage UnitTests
  */
-class Horde_Pear_Unit_RegistryTest
-extends Horde_Pear_TestCase
+class RegistryTest extends TestCase
 {
     public function testListPackages()
     {
-        $this->assertInternalType(
-            'array',
-            $this->_getRegistry()->listPackages()
-        );
+        $this->assertIsArray($this->_getRegistry()->listPackages());
     }
 
     private function _getRegistry()

@@ -11,6 +11,10 @@
  * @package    Pear
  * @subpackage UnitTests
  */
+namespace Horde\Pear\Unit\Package\Contents\Ignore;
+use Horde\Pear\TestCase;
+use \Horde_Pear_Package_Contents_Ignore_Git;
+use \SplFileInfo;
 
 /**
  * Test the .gitignore handler for package contents.
@@ -22,12 +26,12 @@
  * @package    Pear
  * @subpackage UnitTests
  */
-class Horde_Pear_Unit_Package_Contents_Ignore_GitTest
-extends Horde_Pear_TestCase
+class GitTest extends TestCase
 {
     public function testCreation()
     {
         $a = new Horde_Pear_Package_Contents_Ignore_Git('', '');
+        $this->markTestSkipped('No exception triggered during creation test.');  
     }
 
     public function testEmpty()

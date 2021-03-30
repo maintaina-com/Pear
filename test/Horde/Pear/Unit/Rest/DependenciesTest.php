@@ -11,6 +11,9 @@
  * @package    Pear
  * @subpackage UnitTests
  */
+namespace Horde\Pear\Unit\Access;
+use Horde\Pear\TestCase;
+use \Horde_Pear_Rest_Dependencies;
 
 /**
  * Test the package information parser.
@@ -22,8 +25,7 @@
  * @package    Pear
  * @subpackage UnitTests
  */
-class Horde_Pear_Unit_Rest_DependenciesTest
-extends Horde_Pear_TestCase
+class DependenciesTest extends TestCase
 {
     public function testEmpty()
     {
@@ -42,6 +44,7 @@ extends Horde_Pear_TestCase
      */
     public function testBrokenSerialization()
     {
+        $this->expectException('Horde_Pear_Exception');
         $deps = new Horde_Pear_Rest_Dependencies('YYY');
     }
 

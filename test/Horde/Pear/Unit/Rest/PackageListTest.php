@@ -11,6 +11,9 @@
  * @package    Pear
  * @subpackage UnitTests
  */
+namespace Horde\Pear\Unit\Access;
+use Horde\Pear\TestCase;
+use \Horde_Pear_Rest_PackageList;
 
 /**
  * Test the package list parser.
@@ -22,8 +25,7 @@
  * @package    Pear
  * @subpackage UnitTests
  */
-class Horde_Pear_Unit_Rest_PackageListTest
-extends Horde_Pear_TestCase
+class PackageListTest extends TestCase
 {
     public function testCount()
     {
@@ -75,6 +77,7 @@ extends Horde_Pear_TestCase
      */
     public function testGetInvalidPackageLink()
     {
+        $this->expectException('Horde_Pear_Exception');
         $this->_getPackageList()->getPackageLink('Horde_NoSuchPackage');
     }
 

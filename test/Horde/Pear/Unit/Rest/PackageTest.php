@@ -11,6 +11,9 @@
  * @package    Pear
  * @subpackage UnitTests
  */
+namespace Horde\Pear\Unit\Access;
+use Horde\Pear\TestCase;
+use \Horde_Pear_Rest_Package;
 
 /**
  * Test the package information parser.
@@ -22,8 +25,7 @@
  * @package    Pear
  * @subpackage UnitTests
  */
-class Horde_Pear_Unit_Rest_PackageTest
-extends Horde_Pear_TestCase
+class PackageTest extends TestCase
 {
     public function testName()
     {

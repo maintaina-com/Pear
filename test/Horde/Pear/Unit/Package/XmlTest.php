@@ -11,6 +11,11 @@
  * @package    Pear
  * @subpackage UnitTests
  */
+namespace Horde\Pear\Unit\Package;
+use Horde\Pear\TestCase;
+use \Horde_Pear_Package_Xml;
+use \Horde_Pear_Package_Contents_List;
+use \Horde_Pear_Package_Type_Horde;
 
 /**
  * Test the core package XML handler.
@@ -22,8 +27,7 @@
  * @package    Pear
  * @subpackage UnitTests
  */
-class Horde_Pear_Unit_Package_XmlTest
-extends Horde_Pear_TestCase
+class XmlTest extends TestCase
 {
     public function testGetName()
     {
@@ -122,7 +126,7 @@ extends Horde_Pear_TestCase
     {
         $xml = $this->_getFixture();
         $xml->timestamp();
-        $this->assertContains('<date>' . date('Y-m-d') . '</date>', (string) $xml);
+        $this->assertStringContainsString('<date>' . date('Y-m-d') . '</date>', (string) $xml);
     }
 
     public function testModifiedReleaseDate()
@@ -353,7 +357,7 @@ extends Horde_Pear_TestCase
 
     public function testUpdatePrune()
     {
-        $this->assertContains(
+        $this->assertStringContainsString(
             '<dir name="lib">
     <dir name="b">',
             (string) $this->_getUpdatedContents(__DIR__ . '/../../fixture/horde/framework/remove')
@@ -362,7 +366,7 @@ extends Horde_Pear_TestCase
 
     public function testUpdateOrder()
     {
-        $this->assertContains(
+        $this->assertStringContainsString(
             '<dir name="lib">
     <dir name="A">
      <file name="a.php" role="php" />
@@ -395,6 +399,7 @@ extends Horde_Pear_TestCase
      */
     public function testUndefined()
     {
+        $this->expectException('InvalidArgumentException');
         $xml = $this->_getUpdatedContents(__DIR__ . '/../../fixture/horde/framework/simple');
         $xml->noSuchTaskHasBeenDefined();
     }
